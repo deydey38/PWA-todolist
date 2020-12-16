@@ -2,6 +2,8 @@
   <header class="header">
     <h1>{{label}}</h1>
 
+
+
     <form (submit)="appendItem(newTodoInput.value); newTodoInput.value=''">
       <input  #newTodoInput
               name        = "newTodoInput"
@@ -39,6 +41,11 @@
     <button class="clear-completed" (click)="deleteDoneItems()">Supprimer cochées</button>
   </footer>
 </section>
+
+<!-- QR Code -->
+<div class="qrcode">
+<qrcode [qrdata]=myAngularxQrCode [width]="150" [errorCorrectionLevel]="'M'"></qrcode>
+</div>
 <!-- <hr/> -->
 <!-- Version debug de la liste V1 -->
 <!--

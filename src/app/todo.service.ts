@@ -6,9 +6,17 @@ import {TodoItemData} from './dataTypes/TodoItemData';
 @Injectable()
 export class TodoService {
 
-  private todoListSubject = new BehaviorSubject<TodoListData>( {label: 'TodoList', items: [], editingItem: null, nbRestant: 0, allChecked: false} );
+  private todoListSubject = new BehaviorSubject<TodoListData>(
+    {
+      label: 'TodoList',
+      items: localStorage.getItem('items') == null ? [] : JSON.parse(localStorage.getItem('items')),
+      editingItem: null,
+      nbRestant: localStorage.getItem('items') == null ? 0 : JSON.parse(localStorage.getItem('items')).filter(todo => !todo.isDone).length,
+      allChecked: false
+    }
+  );
 
-  constructor() { }
+  constructor() {}
 
   getTodoListDataObservable(): Observable<TodoListData> {
     return this.todoListSubject.asObservable();
@@ -23,6 +31,8 @@ export class TodoService {
       nbRestant: tdl.nbRestant,
       allChecked: tdl.allChecked
     });
+    const tdl2 = this.todoListSubject.getValue();
+    localStorage.setItem('items', JSON.stringify(tdl2.items));
   }
 
   setItemsDone(isDone: boolean, ...items: TodoItemData[] ) {
@@ -34,6 +44,8 @@ export class TodoService {
       nbRestant: tdl.nbRestant,
       allChecked: tdl.allChecked
     });
+    const tdl2 = this.todoListSubject.getValue();
+    localStorage.setItem('items', JSON.stringify(tdl2.items));
   }
 
   changeItems(isDone: boolean) {
@@ -45,6 +57,8 @@ export class TodoService {
       nbRestant: tdl.nbRestant,
       allChecked: tdl.allChecked
     });
+    const tdl2 = this.todoListSubject.getValue();
+    localStorage.setItem('items', JSON.stringify(tdl2.items));
 
   }
 
@@ -57,6 +71,8 @@ export class TodoService {
       nbRestant: tdl.nbRestant,
       allChecked: tdl.allChecked
     });
+    const tdl2 = this.todoListSubject.getValue();
+    localStorage.setItem('items', JSON.stringify(tdl2.items));
   }
 
   removeItems( ...items: TodoItemData[] ) {
@@ -68,6 +84,8 @@ export class TodoService {
       nbRestant: tdl.nbRestant,
       allChecked: tdl.allChecked
     });
+    const tdl2 = this.todoListSubject.getValue();
+    localStorage.setItem('items', JSON.stringify(tdl2.items));
   }
 
   setEditingItem(item: TodoItemData){
@@ -101,6 +119,8 @@ export class TodoService {
       nbRestant: tdl.nbRestant,
       allChecked: tdl.allChecked
     });
+    const tdl2 = this.todoListSubject.getValue();
+    localStorage.setItem('items', JSON.stringify(tdl2.items));
   }
 
 }

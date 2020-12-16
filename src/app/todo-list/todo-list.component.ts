@@ -12,12 +12,18 @@ export class TodoListComponent implements OnInit {
 
     private todoList: TodoListData;
     private filter:String;
+    //public myAngularxQrCode: any = null;
 
     constructor(private todoService: TodoService) {
         todoService.getTodoListDataObservable().subscribe( tdl => this.todoList = tdl );
+        //this.myAngularxQrCode = JSON.stringify(this.todoList);
     }
 
     ngOnInit() {
+    }
+
+    get myAngularxQrCode(): any {
+        return JSON.stringify(this.todoList);
     }
 
     get label(): string {
