@@ -18,6 +18,6 @@ Gestion de filtres pour afficher tous les Todos, les Todos complétés et non-co
 Enregistrement des Todos dans le local storage, et récupértion des Todos du local storage au démarrage
 Génération d'un QRCode qui récupèrent les Todos de la liste au format JSON
 
-#Problèmes rencontrés
+# Problèmes rencontrés
 Au début du projet, j'ai eu du mal à comprendre comment marche la "todoListSubject" et comment faire passer les infos jusqu'à la vue.
 Par exemple, pour mettre à jour le nombre de Todos restantes, j'appel la méthode à chaque fois qu'une modification est faite sur un Todo. Ca fonctionne mais je ne pas sûr que ce soit la façon la plus adaptée.
