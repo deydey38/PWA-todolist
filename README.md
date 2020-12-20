@@ -4,7 +4,7 @@
 
 Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Fonctionnalités de bases
+# Fonctionnalités de bases
 Ajouter un Todo avec un libellé
 Modifier le libellé du Todo (double-clic sur le libellé)
 Supprimer un Todo en cliquant sur la croix
